@@ -23,7 +23,7 @@ def scrape_updates(html_content):
     url_list = []
     selector = Selector(html_content)
 
-    url = selector.css(".cs-overlay-link :: attr(href)").getall()
+    url = selector.css(".cs-overlay-link ::attr(href)").getall()
     url_list.extend(url)
 
     return url_list
@@ -31,8 +31,13 @@ def scrape_updates(html_content):
 
 # Requisito 3
 def scrape_next_page_link(html_content):
-    """Seu código deve vir aqui"""
-    raise NotImplementedError
+    selector = Selector(html_content)
+    try:
+        next = selector.css(".next ::attr(href)").get()
+
+        return next
+    except IndexError:
+        return None
 
 
 # Requisito 4
