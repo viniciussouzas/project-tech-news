@@ -17,7 +17,7 @@ def search_by_title(title):
 def search_by_date(date):
     try:
         converted_date = datetime.strptime(
-            date, "%Y-%m-%d").strptime("%d/%m/%Y")
+            date, "%Y-%m-%d").strftime("%d/%m/%Y")
     except ValueError:
         raise ValueError("Data inválida")
 
